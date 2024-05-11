@@ -1,0 +1,14 @@
+module.exports = function(controller) {
+    const { BotkitConversation } = require("botkit");
+    const flow = new BotkitConversation("agendamento", controller);
+
+    flow.addAction("agendamento");
+
+    flow.addMessage(JSON.stringify({
+        type: "message",
+        section: "agendamento",
+        body: "nos informe a qual especialidade gostaria de marca a consulta ?"
+    }), "agendamento");
+
+    controller.addDialog(flow);
+};
